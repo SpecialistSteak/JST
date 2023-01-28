@@ -1,0 +1,9 @@
+.idea
+target
+src/main
+src/main/resources
+src/test
+pom.xml
+scratch
+log.txt
+src/main/java/specialiststeak/CustomSort.java
