@@ -19,7 +19,7 @@ import static specialiststeak.TimeUtils.TimeUnits.staticConvertTime;
 import static specialiststeak.memoryutils.MemoryTesterToCSV.convertToCSV;
 import static specialiststeak.memoryutils.MemoryTester.getLineNumber;
 
-public class MainClass {
+public class ExampleProgram {
     public static <bubbleSort> void main(String[] args) {
         /*TimeTester example usage*/
         TimeTester timeTester = new TimeTester();
