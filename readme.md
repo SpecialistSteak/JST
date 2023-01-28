@@ -1,9 +1,9 @@
-# Welcome to PFLib!
+# Welcome to JTS!
 
-PFLib is a simple library with features surrounding quick testing of programs without dependencies or too much code. In the future I plan to add graphing utilities, which can help you visualize your code's performance graphically.
+Java Simple Test is a simple 'library' with features surrounding quick testing of programs without dependencies or too much code. In the future I plan to add graphing utilities, which can help you visualize your code's performance graphically.
 
 # Installation*
-To 'install' pflib, just copy the desired package into your project. Then, remove the package when you're done. No need for dependencies or imports. 
+To 'install' JST, just copy the desired package into your project. Then, remove the package when you're done. No need for dependencies or imports. 
 
 # Algorithms
 #### Algorithms:
