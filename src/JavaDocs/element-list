@@ -2,6 +2,7 @@ unnamed package
 specialiststeak
 specialiststeak.Algorithms
 specialiststeak.memoryutils
+specialiststeak.memoryutils.CSV
 specialiststeak.Population
 specialiststeak.TestingUtils
 specialiststeak.TimeUtils

@@ -5,6 +5,7 @@ import specialiststeak.TimeUtils.TimeUnits;
 import specialiststeak.memoryutils.MemoryTester;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Arrays;
 
 import static specialiststeak.Algorithms.Shuffle.shuffle;
@@ -16,11 +17,12 @@ import static specialiststeak.Population.PopulateArray.populate;
 import static specialiststeak.TestingUtils.TypeTester.getVarType;
 import static specialiststeak.TimeUtils.TimeUnits.SECONDS;
 import static specialiststeak.TimeUtils.TimeUnits.staticConvertTime;
-import static specialiststeak.memoryutils.MemoryTesterToCSV.convertToCSV;
+import static specialiststeak.memoryutils.CSV.CSVToGraph.convertToGraph;
 import static specialiststeak.memoryutils.MemoryTester.getLineNumber;
+import static specialiststeak.memoryutils.MemoryTesterToCSV.convertToCSV;
 
 public class ExampleProgram {
-    public static <bubbleSort> void main(String[] args) {
+    public static <bubbleSort> void main(String[] args) throws FileNotFoundException {
         /*TimeTester example usage*/
         TimeTester timeTester = new TimeTester();
         timeTester.startTimer("Optional timer name");
@@ -127,6 +129,18 @@ public class ExampleProgram {
         line();
 
         convertToCSV(memoryTester, new File("memory_points.csv"));
+
+        //Convert a memory points CSV file to a graph png file using JFreeChart
+        /* Dependency for your pom.xml if you want to use the convertToGraph() method
+        <dependencies>
+            <dependency>
+                <groupId>org.jfree</groupId>
+                <artifactId>jfreechart</artifactId>
+                <version>1.0.19</version>
+            </dependency>
+        </dependencies>
+        */
+        convertToGraph("memory_points.csv");
     }
 
     // Just for convenience

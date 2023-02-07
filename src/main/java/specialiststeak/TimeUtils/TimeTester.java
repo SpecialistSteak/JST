@@ -3,7 +3,7 @@ package specialiststeak.TimeUtils;
 import java.util.ArrayList;
 
 public class TimeTester implements TimedCode {
-    private ArrayList<Times> times;
+    private final ArrayList<Times> times;
 
     /**
      * Creates a new TimeTester object.

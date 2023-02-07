@@ -170,7 +170,27 @@ After you finish logging memory at different points, you can export the data to 
 
 `convertToCSV(memoryTester, new File("memory_points.csv"));`
 
-Which will generate a new CSV file in the root directory. **[THERE WILL BE SUPPORT FOR GRAPHING IT TO AN IMAGE FILE IN THE FUTURE]**
+Which will generate a new CSV file in the root directory. Then, you can graph it using the following code:
+
+```
+convertToGraph("memory_points.csv", memory_points.png", STEP);
+//or
+convertToGraph("memory_points.csv");
+//or
+convertToGraph();
+```
+Which will save it to the (un)specified file as a png. 
+Please note that the jfree dependency is required for this to work. You can add it to your pom.xml file like so:
+
+```
+<dependency>
+    <groupId>org.jfree</groupId>
+    <artifactId>jfreechart</artifactId>
+    <version>1.0.19</version>
+</dependency>
+```
+If you do not want to add the dependency/do not want to graph, you can just delete the CSV subpackage in MemoryTester.
+
 # Stack Logging Testing
 #### StackTester:
 - StackTester object
