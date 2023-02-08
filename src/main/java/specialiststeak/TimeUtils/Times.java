@@ -2,7 +2,7 @@ package specialiststeak.TimeUtils;
 
 import static specialiststeak.TimeUtils.TimeUnits.staticConvertTime;
 
-public class Times {
+public class Times{
     private long startTime;
     private long endTime;
     private long elapsedTime;

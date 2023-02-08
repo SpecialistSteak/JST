@@ -54,6 +54,10 @@ public class SortTimeTester {
         times.get(times.size() - 1).setElapsedTime(time);
     }
 
+    public void setTimes(ArrayList<SortTimes> times) {
+        this.times = times;
+    }
+
     /**
      * Clears all the times
      */

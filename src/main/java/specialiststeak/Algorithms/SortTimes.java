@@ -3,15 +3,15 @@ package specialiststeak.Algorithms;
 import specialiststeak.TimeUtils.TimeUnits;
 import specialiststeak.TimeUtils.Times;
 
-public class SortTimes extends Times {
-    private String sortName;
+public class SortTimes extends Times implements Comparable {
+    private final String sortName;
 
     /**
      * Creates a new Times object.
      *
      * @param startTime   The start time in nanoseconds.
      * @param endTime     The end time in nanoseconds.
-     * @param elapsedTime
+     * @param elapsedTime The elapsed time in nanoseconds.
      */
     public SortTimes(long startTime, long endTime, long elapsedTime, String sortName) {
         super(startTime, endTime, elapsedTime);
@@ -49,4 +49,8 @@ public class SortTimes extends Times {
         return sortName;
     }
 
+    @Override
+    public int compareTo(Object o) {
+        return Long.compare(getElapsedTime(), ((SortTimes) o).getElapsedTime());
+    }
 }

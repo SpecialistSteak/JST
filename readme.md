@@ -7,14 +7,27 @@ To 'install' JST, just copy the desired package into your project. Then, remove 
 
 # Algorithms
 #### Algorithms:
+
+<details>
+<summary>Sorting Algorithms</summary>
+
 - Iterative bubble sort
-- Arrays.Sort()
-- Single pivot quick sort
-- Heap sort
-- Merge sort
+- Recursive bubble sort
+- Comb sort
+- Selection sort
 - Insertion sort
-- HashMap sort
+- Gnome sort
+- Shell sort
+- Merge sort
+- Heap sort
+- Quick sort
+- Dual pivot quick sort
+- Tri pivot quick sort
+- Hashmap sort
+- Arrays.sort
+- Collections.sort
 - Fisher-Yates shuffle
+</details>
 
 <p>To use any of these sorting algorithms, first make sure you have implemented Comparable in your class:</p>
 
