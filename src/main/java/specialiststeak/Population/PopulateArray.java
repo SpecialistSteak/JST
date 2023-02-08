@@ -96,6 +96,11 @@ public class PopulateArray {
     }
 
     /**
+     * Use this to indicate whether to allow final fields to be modified.
+     */
+    private static final boolean allowFinal = false;
+
+    /**
      * Clones an object and modifies its fields to random values.
      * This method is not guaranteed to work with all objects, but it should work with most.
      * It will not work properly on objects with final fields, or fields that are not primitives,
@@ -111,7 +116,7 @@ public class PopulateArray {
             Object clone = obj.getClass().getDeclaredConstructor().newInstance();
             for (Field field : obj.getClass().getDeclaredFields()) {
                 field.setAccessible(true);
-                if (isFinal(field.getModifiers()) || field.getType().equals(void.class)) {
+                if (isFinal(field.getModifiers()) != allowFinal || field.getType().equals(void.class)) {
                     continue;
                 }
                 if (field.getType().isPrimitive()) {
