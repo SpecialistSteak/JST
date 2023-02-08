@@ -1,11 +1,14 @@
+import specialiststeak.Algorithms.SortTimeTester;
 import specialiststeak.Population.Types;
 import specialiststeak.TestingUtils.StackTester;
 import specialiststeak.TimeUtils.TimeTester;
 import specialiststeak.TimeUtils.TimeUnits;
+import specialiststeak.TimeUtils.Times;
 import specialiststeak.memoryutils.MemoryTester;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import static specialiststeak.Algorithms.Shuffle.shuffle;
@@ -22,7 +25,7 @@ import static specialiststeak.memoryutils.MemoryTester.getLineNumber;
 import static specialiststeak.memoryutils.MemoryTesterToCSV.convertToCSV;
 
 public class ExampleProgram {
-    public static <bubbleSort> void main(String[] args) throws FileNotFoundException {
+    public static <bubbleSort> void main(String[] args) throws FileNotFoundException, IllegalAccessException {
         /*TimeTester example usage*/
         TimeTester timeTester = new TimeTester();
         timeTester.startTimer("Optional timer name");
@@ -104,6 +107,12 @@ public class ExampleProgram {
         }
         memoryTester.logUsedMemory(getLineNumber());
         line();
+
+        SortTimeTester[] sortTimeTesters = new SortTimeTester[10];
+        for (int i = 0; i < sortTimeTesters.length; i++) {
+            sortTimeTesters[i] = (SortTimeTester) cloneAndModify(new SortTimeTester());
+        }
+
 
         /*testAll example usage*/
         // This is just a simple test. It's not always representative of the actual performance of the algorithm.

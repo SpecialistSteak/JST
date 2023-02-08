@@ -5,6 +5,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Random;
 
+import static java.lang.reflect.Modifier.isFinal;
 import static specialiststeak.Population.Convert.toIntArray;
 import static specialiststeak.Population.Types.getValue;
 
@@ -97,7 +98,7 @@ public class PopulateArray {
     /**
      * Clones an object and modifies its fields to random values.
      * This method is not guaranteed to work with all objects, but it should work with most.
-     * It will not work on objects with final fields, or fields that are not primitives,
+     * It will not work properly on objects with final fields, or fields that are not primitives,
      * Strings, or Serializable objects.
      *
      * @param obj The object to clone
@@ -110,44 +111,40 @@ public class PopulateArray {
             Object clone = obj.getClass().getDeclaredConstructor().newInstance();
             for (Field field : obj.getClass().getDeclaredFields()) {
                 field.setAccessible(true);
+                if (isFinal(field.getModifiers()) || field.getType().equals(void.class)) {
+                    continue;
+                }
                 if (field.getType().isPrimitive()) {
                     Random random = new Random();
-                    if (field.getType().equals(int.class)) {
-                        field.set(clone, random.nextInt());
-                    } else if (field.getType().equals(long.class)) {
-                        field.set(clone, random.nextLong());
-                    } else if (field.getType().equals(double.class)) {
-                        field.set(clone, random.nextDouble());
-                    } else if (field.getType().equals(float.class)) {
-                        field.set(clone, random.nextFloat());
-                    } else if (field.getType().equals(short.class)) {
-                        field.set(clone, (short) random.nextInt(-32_768, 32_767));
-                    } else if (field.getType().equals(byte.class)) {
-                        field.set(clone, (byte) random.nextInt(-128, 127));
-                    } else if (field.getType().equals(char.class)) {
-                        field.set(clone, (char) getValue(Types.CHAR));
-                    } else if (field.getType().equals(boolean.class)) {
-                        field.set(clone, Math.random() > 0.5);
+                    switch (field.getType().getName()) {
+                        case "int" -> field.setInt(clone, random.nextInt());
+                        case "long" -> field.setLong(clone, random.nextLong());
+                        case "double" -> field.setDouble(clone, random.nextDouble());
+                        case "float" -> field.setFloat(clone, random.nextFloat());
+                        case "short" -> field.setShort(clone, (short) random.nextInt(-32_768, 32_767));
+                        case "byte" -> field.setByte(clone, (byte) random.nextInt(-128, 127));
+                        case "char" -> field.setChar(clone, (char) getValue(Types.CHAR));
+                        case "boolean" -> field.setBoolean(clone, random.nextBoolean());
                     }
                 } else if (field.getType().equals(String.class)) {
                     field.set(clone, getValue(Types.STRING));
-                } else if (field.getType().equals(int[].class)) {
-                    field.set(clone, toIntArray(populate(Types.INT, 10)));
-                } else if (field.getType().equals(double[].class)) {
-                    field.set(clone, toIntArray(populate(Types.DOUBLE, 10)));
-                } else if (field.getType().equals(char[].class)) {
-                    field.set(clone, toIntArray(populate(Types.CHAR, 10)));
+                } else if (field.getType().isArray() && field.getType().getComponentType().isPrimitive()) {
+                    int length = 10;
+                    switch (field.getType().getComponentType().getName()) {
+                        case "int" -> field.set(clone, populate(Types.INT, length));
+                        case "double" -> field.set(clone, populate(Types.DOUBLE, length));
+                        case "char" -> field.set(clone, populate(Types.CHAR, length));
+                    }
                 } else if (field.getType().equals(String[].class)) {
-                    field.set(clone, toIntArray(populate(Types.STRING, 10)));
+                    field.set(clone, populate(Types.STRING, 10));
                 } else if (Serializable.class.isAssignableFrom(field.getType())) {
                     field.set(clone, cloneAndModify(field.get(obj)));
                 }
             }
             return clone;
-        } catch (InstantiationException | IllegalAccessException | NoSuchMethodException |
-                 InvocationTargetException e) {
-            e.printStackTrace();
-            return null;
+        } catch (Exception e) {
+            System.out.println("Error cloning object: " + e.getClass().getSimpleName());
         }
+        return obj;
     }
 }
