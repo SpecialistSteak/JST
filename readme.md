@@ -44,13 +44,14 @@ To 'install' JST, just copy the desired package into your project. Then, remove 
 <p>Where the output will look something like:</p>
 
 ```
-Iterative bubble sort  : 26735800ns
-Arrays.sort            : 1816800ns
+Standard insertion sort: 150100ns
 Standard quick sort    : 645400ns
 Standard heap sort     : 1775800ns
-Standard merge sort    : 2290000ns
-Standard insertion sort: 150100ns
+Arrays.sort            : 1816800ns
 HashMap sort           : 2078700ns
+Standard merge sort    : 2290000ns
+Iterative bubble sort  : 26735800ns
+etc...
 ```
 <p>It will print out the runtimes for each of the different sort algorithms on your specific array.</p>
 
