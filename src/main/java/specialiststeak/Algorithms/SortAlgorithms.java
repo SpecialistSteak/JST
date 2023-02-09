@@ -1,8 +1,12 @@
 package specialiststeak.Algorithms;
 
-import specialiststeak.TimeUtils.Times;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
 
-import java.util.*;
+import static specialiststeak.Algorithms.SortTimeTester.runCode;
 
 import static specialiststeak.Algorithms.Shuffle.shuffle;
 
@@ -118,6 +122,139 @@ public class SortAlgorithms {
 
         System.out.print(timeTester.toString());
         return timeTester;
+    }
+
+    public static <T extends Comparable<T>> void testAll(T[] array, int iterations) {
+        SortTimeTester timeTester = new SortTimeTester();
+        long[][] ar2r = new long[15][iterations];
+        long[] average = new long[14];
+        final String[] sortNames = {"Iterative bubble sort", "Recursive bubble sort", "Comb sort", "Selection sort", "Insertion sort", "Gnome sort", "Shell sort", "Merge sort", "Standard heap sort", "Standard quick sort", "Dual pivot quick sort", "Tri pivot quick sort", "HashMap sort", "Arrays.sort", "Collections.sort"};
+
+        shuffle(array);
+
+        for (int i = 0; i < iterations; i++){
+            shuffle(array);
+            ar2r[0][i] = runCode(() -> iterativeBubbleSort(array));
+        }
+
+        shuffle(array);
+
+        for (int i = 0; i < iterations; i++){
+            shuffle(array);
+            ar2r[1][i] = runCode(() -> recursiveBubbleSort(array, array.length));
+        }
+
+        shuffle(array);
+
+        for (int i = 0; i < iterations; i++){
+            shuffle(array);
+            ar2r[2][i] = runCode(() -> combSort(array));
+        }
+
+        shuffle(array);
+
+        for (int i = 0; i < iterations; i++){
+            shuffle(array);
+            ar2r[3][i] = runCode(() -> selectionSort(array));
+        }
+
+        shuffle(array);
+
+        for (int i = 0; i < iterations; i++){
+            shuffle(array);
+            ar2r[4][i] = runCode(() -> insertionSort(array));
+        }
+
+        shuffle(array);
+
+        for (int i = 0; i < iterations; i++){
+            shuffle(array);
+            ar2r[5][i] = runCode(() -> gnomeSort(array));
+        }
+
+        shuffle(array);
+
+        for (int i = 0; i < iterations; i++){
+            shuffle(array);
+            ar2r[6][i] = runCode(() -> shellSort(array));
+        }
+
+        shuffle(array);
+
+        for (int i = 0; i < iterations; i++){
+            shuffle(array);
+            ar2r[7][i] = runCode(() -> mergeSort(array));
+        }
+
+        shuffle(array);
+
+        for (int i = 0; i < iterations; i++){
+            shuffle(array);
+            ar2r[8][i] = runCode(() -> heapSort(array));
+        }
+
+        shuffle(array);
+
+        for (int i = 0; i < iterations; i++){
+            shuffle(array);
+            ar2r[9][i] = runCode(() -> quickSort(array, 0, array.length - 1));
+        }
+
+        shuffle(array);
+
+        for (int i = 0; i < iterations; i++){
+            shuffle(array);
+            ar2r[10][i] = runCode(() -> dualPivotQuickSort(array, 0, array.length - 1));
+        }
+
+        shuffle(array);
+
+        for (int i = 0; i < iterations; i++){
+            shuffle(array);
+            ar2r[11][i] = runCode(() -> triPivotQuickSort(array, 0, array.length - 1));
+        }
+
+        shuffle(array);
+
+        for (int i = 0; i < iterations; i++){
+            shuffle(array);
+            ar2r[12][i] = runCode(() -> hashMapSort(array));
+        }
+
+        shuffle(array);
+
+        for (int i = 0; i < iterations; i++){
+            shuffle(array);
+            ar2r[13][i] = runCode(() -> ArraysSort(array));
+        }
+
+        shuffle(array);
+
+        for (int i = 0; i < iterations; i++){
+            shuffle(array);
+            List<T> list = Arrays.asList(array);
+            ar2r[14][i] = runCode(() -> {
+                Collections.sort(list);
+            });
+        }
+
+        for (int i = 0; i < 14; i++){
+            long sum = 0;
+            for (int j = 0; j < iterations; j++){
+                sum += ar2r[i][j];
+            }
+            average[i] = sum / iterations;
+        }
+        for (int i = 0; i < 14; i++){
+            timeTester.addTime(new SortTimes(0,0, average[i], sortNames[i]));
+        }
+
+        ArrayList<SortTimes> l = timeTester.getTimes();
+        SortTimes[] arr = l.toArray(new SortTimes[0]);
+        insertionSort(arr);
+        l = new ArrayList<>(Arrays.asList(arr));
+        timeTester.setTimes(l);
+        System.out.print(timeTester.toString());
     }
 
     /**
