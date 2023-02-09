@@ -21,6 +21,8 @@ public class exampleClass implements Comparable<exampleClass> {
 
     @Override
     public int compareTo(exampleClass o) {
-        return (this.a + this.b + this.c) - (o.a + o.b + o.c);
+        int sum1 = this.a + this.b + this.c;
+        int sum2 = o.a + o.b + o.c;
+        return Integer.compare(sum1, sum2);
     }
 }

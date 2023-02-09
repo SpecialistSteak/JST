@@ -15,6 +15,7 @@ public class SortTimes extends Times implements Comparable {
      */
     public SortTimes(long startTime, long endTime, long elapsedTime, String sortName) {
         super(startTime, endTime, elapsedTime);
+        this.setElapsedTime(elapsedTime);
         this.sortName = sortName;
     }
 

@@ -8,6 +8,28 @@ public class SortTimeTester {
     private ArrayList<SortTimes> times;
 
     /**
+     * Runs the code and returns the amount of time it took to run as a long
+     *
+     * @param code The code to run
+     * @return The amount of time it took to run
+     */
+    public static long runCode(Runnable code) {
+        long start = System.nanoTime();
+        code.run();
+        long end = System.nanoTime();
+        return (end - start);
+    }
+
+    /**
+     * Adds a time to the list of times
+     *
+     * @param time The time to add
+     */
+    public void addTime(SortTimes time) {
+        times.add(time);
+    }
+
+    /**
      * Creates a new SortTimeTester object
      */
     public SortTimeTester() {

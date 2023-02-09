@@ -113,14 +113,13 @@ public class ExampleProgram {
             sortTimeTesters[i] = (SortTimeTester) cloneAndModify(new SortTimeTester());
         }
 
-
         /*testAll example usage*/
         // This is just a simple test. It's not always representative of the actual performance of the algorithm.
         // And make sure you know which algorithm to use when, as some are better than others in certain situations.
         // testAll requires the class to implement Comparable
-        testAll(arr);
+        testAll(arr, 50);
         line();
-        testAll(arr2);
+        testAll(arr2, 50);
         memoryTester.logUsedMemory(getLineNumber());
         line();
 
