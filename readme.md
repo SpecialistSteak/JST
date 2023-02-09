@@ -38,6 +38,9 @@ To 'install' JST, just copy the desired package into your project. Then, remove 
 <p>If you want to call upon the 'testAll' method:</p>
 
 `testAll(array);`
+<p>Or if you want to test the average of n runs:</p>
+
+`testAll(array, n);`
 <p>Where the output will look something like:</p>
 
 ```
