@@ -1,7 +1,6 @@
 unnamed package
-specialiststeak
 specialiststeak.Algorithms
-specialiststeak.datastructures
+specialiststeak.CustomSorts
 specialiststeak.memoryutils
 specialiststeak.memoryutils.CSV
 specialiststeak.Population
