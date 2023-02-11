@@ -3,7 +3,7 @@ package specialiststeak.TimeUtils;
 import static specialiststeak.TimeUtils.TimeUnits.staticConvertTime;
 
 public class Times{
-    private long startTime;
+    private final long startTime;
     private long endTime;
     private long elapsedTime;
     private String title;

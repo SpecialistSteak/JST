@@ -26,7 +26,7 @@ public class SortTimes extends Times implements Comparable {
      */
     @Override
     public String toString() {
-        return String.format("%-23s: %sns",
+        return String.format("%-25s: %sns",
                 getSortName(), getElapsedTime());
     }
 

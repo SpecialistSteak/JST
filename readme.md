@@ -11,21 +11,32 @@ To 'install' JST, just copy the desired package into your project. Then, remove 
 <details>
 <summary>Sorting Algorithms</summary>
 
+- Arrays.sort
 - Iterative bubble sort
 - Recursive bubble sort
+- Circle sort
+- Cocktail shaker sort
 - Comb sort
-- Selection sort
-- Insertion sort
-- Gnome sort
-- Shell sort
-- Merge sort
-- Heap sort
-- Quick sort
+- Counting sort
+- Cycle sort
 - Dual pivot quick sort
-- Tri pivot quick sort
-- Hashmap sort
-- Arrays.sort
-- Collections.sort
+- Dutch national flag sort
+- Gnome sort
+- HashMap sort
+- Standard heap sort
+- Insertion sort
+- Introspective sort
+- Lame sort
+- Merge sort
+- Pancake sort
+- Standard quick sort
+- Selection sort
+- Shell sort
+- Simple sort
+- Swap sort
+- Tim sort
+- Tree sort
+- Wiggle sort
 - Fisher-Yates shuffle
 </details>
 
@@ -34,7 +45,7 @@ To 'install' JST, just copy the desired package into your project. Then, remove 
 `class ExampleClass implements Comparable {`
 <p>Then, just call upon any of the sort methods to sort your array:</p>
 
-`quicksort(array) //rearranges the array and puts it back in place.`
+`new QuickSort().sort(array) //rearranges the array and puts it back in place.`
 <p>If you want to call upon the 'testAll' method:</p>
 
 `testAll(array);`
