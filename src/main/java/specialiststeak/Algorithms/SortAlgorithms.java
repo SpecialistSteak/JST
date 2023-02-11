@@ -1,5 +1,7 @@
 package specialiststeak.Algorithms;
 
+import specialiststeak.Algorithms.Sorts.IntroSort;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -11,8 +13,6 @@ import static specialiststeak.Algorithms.SortTimeTester.runCode;
 import static specialiststeak.Algorithms.Shuffle.shuffle;
 
 public class SortAlgorithms {
-
-    //TODO: Add the other sorting algorithms to the testAll method.
 
     /**
      * Tests all the sorting algorithms. This is used for testing and benchmarking on the same data.
@@ -109,6 +109,12 @@ public class SortAlgorithms {
 
         shuffle(array);
 
+        timeTester.startTimer("Introspective sort");
+        IntroSort.sort(array);
+        timeTester.stopTimer();
+
+        shuffle(array);
+
         List<T> list = Arrays.asList(array);
         timeTester.startTimer("Collections.sort");
         Collections.sort(list);
@@ -128,7 +134,7 @@ public class SortAlgorithms {
         SortTimeTester timeTester = new SortTimeTester();
         long[][] ar2r = new long[15][iterations];
         long[] average = new long[14];
-        final String[] sortNames = {"Iterative bubble sort", "Recursive bubble sort", "Comb sort", "Selection sort", "Insertion sort", "Gnome sort", "Shell sort", "Merge sort", "Standard heap sort", "Standard quick sort", "Dual pivot quick sort", "Tri pivot quick sort", "HashMap sort", "Arrays.sort", "Collections.sort"};
+        final String[] sortNames = {"Iterative bubble sort", "Recursive bubble sort", "Comb sort", "Selection sort", "Insertion sort", "Gnome sort", "Shell sort", "Merge sort", "Standard heap sort", "Standard quick sort", "Dual pivot quick sort", "Tri pivot quick sort", "Introsort", "HashMap sort", "Arrays.sort", "Collections.sort"};
 
         shuffle(array);
 
@@ -212,6 +218,13 @@ public class SortAlgorithms {
         for (int i = 0; i < iterations; i++){
             shuffle(array);
             ar2r[11][i] = runCode(() -> triPivotQuickSort(array, 0, array.length - 1));
+        }
+
+        shuffle(array);
+
+        for (int i = 0; i < iterations; i++){
+            shuffle(array);
+            ar2r[12][i] = runCode(() -> IntroSort.sort(array));
         }
 
         shuffle(array);
