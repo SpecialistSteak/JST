@@ -9,34 +9,16 @@ import static specialiststeak.Algorithms.Shuffle.shuffle;
 import static specialiststeak.Algorithms.SortTimeTester.runCode;
 
 public class SortAlgorithms {
-
     private static final String[] sortNames = {
-            "Arrays.sort",
-            "Iterative bubble sort",
-            "Recursive bubble sort",
-            "Circle sort",
-            "Cocktail shaker sort",
-            "Comb sort",
-            "Counting sort",
-            "Cycle sort",
-            "Dual pivot quick sort",
-            "Dutch national flag sort",
-            "Gnome sort",
-            "HashMap sort",
-            "Standard heap sort",
-            "Insertion sort",
-            "Introspective sort",
-            "Lame sort",
-            "Merge sort",
-            "Pancake sort",
-            "Standard quick sort",
-            "Selection sort",
-            "Shell sort",
-            "Simple sort",
-            "Swap sort",
-            "Tim sort",
-            "Tree sort",
-            "Wiggle sort"
+        "Arrays.sort()", "Bubble Sort", "Bubble Sort Recursive", "CircleSort",
+        "Cocktail Shaker Sort", "Comb Sort", "Counting Sort",
+        "Cycle Sort", "Dual Pivot Quick Sort", "Dutch National Flag Sort",
+        "Gnome Sort", "Hash Map Sort", "Heap Sort",
+        "Insertion Sort", "Introspective Sort", "Lame Sort",
+        "Merge Sort", "Pancake Sort", "Quick Sort",
+        "Selection Sort", "Shell Sort", "Simple Sort",
+        "Swap Sort", "Tim Sort", "Tree Sort",
+        "Wiggle Sort"
     };
 
     public static <T extends Comparable<T>> void testAll(T[] array) {

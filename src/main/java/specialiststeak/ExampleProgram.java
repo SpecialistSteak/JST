@@ -1,6 +1,8 @@
 package specialiststeak;
 
 import specialiststeak.Algorithms.SortTimeTester;
+import specialiststeak.Algorithms.Sorts.LameSort;
+import specialiststeak.Algorithms.Sorts.MergeSort;
 import specialiststeak.Algorithms.Sorts.QuickSort;
 import specialiststeak.Population.Types;
 import specialiststeak.TestingUtils.StackTester;
@@ -18,12 +20,12 @@ import static specialiststeak.Population.Convert.toIntArray;
 import static specialiststeak.Population.PopulateArray.cloneAndModify;
 import static specialiststeak.Population.PopulateArray.populate;
 import static specialiststeak.TestingUtils.TypeTester.getVarType;
+import static specialiststeak.TimeUtils.TimeTester.runCode;
 import static specialiststeak.TimeUtils.TimeUnits.SECONDS;
 import static specialiststeak.TimeUtils.TimeUnits.staticConvertTime;
 import static specialiststeak.memoryutils.CSV.CSVToGraph.convertToGraph;
 import static specialiststeak.memoryutils.MemoryTester.getLineNumber;
 import static specialiststeak.memoryutils.MemoryTesterToCSV.convertToCSV;
-
 public class ExampleProgram {
     public static void main(String[] args) throws FileNotFoundException, IllegalAccessException {
         /*TimeTester example usage*/
@@ -40,9 +42,9 @@ public class ExampleProgram {
         System.out.println(timeTester);
 
         line();
-        System.out.println(SECONDS.convertTime(TimeTester.runCode(() -> {
+        System.out.println(SECONDS.convertTime(runCode(() -> {
         })) + SECONDS.toString());
-        System.out.println(staticConvertTime(TimeTester.runCode(() -> {
+        System.out.println(staticConvertTime(runCode(() -> {
         }), TimeUnits.NANOSECONDS) + "ns");
         line();
 
@@ -117,6 +119,11 @@ public class ExampleProgram {
         Integer[] allsame = new Integer[10_000];
         Arrays.fill(allsame, 1);
 
+        Integer[] terriblyLongArray = new Integer[10_000_000];
+        for (int i = 0; i < terriblyLongArray.length; i++) {
+            terriblyLongArray[i] = (int) (Math.random() * 100);
+        }
+
         line();
 
         /*testAll example usage*/
@@ -132,6 +139,14 @@ public class ExampleProgram {
         line();
         testAll(allsame);
         line();
+        System.out.println("Lame" + runCode(() -> {
+            new LameSort().sort(terriblyLongArray);
+        }));
+        shuffle(terriblyLongArray);
+        System.out.println("Merge" + runCode(() -> {
+            new MergeSort().sort(terriblyLongArray);
+        }));
+
         memoryTester.logUsedMemory(getLineNumber());
 
         /*PopulateArray example usage*/
