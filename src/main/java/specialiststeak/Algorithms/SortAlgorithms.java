@@ -10,7 +10,7 @@ import static specialiststeak.Algorithms.SortTimeTester.runCode;
 
 public class SortAlgorithms {
     private static final String[] sortNames = {
-        "Arrays.sort()", "Bubble Sort", "Bubble Sort Recursive", "CircleSort",
+        "Arrays.sort", "Bubble Sort", "Bubble Sort Recursive", "Circle Sort",
         "Cocktail Shaker Sort", "Comb Sort", "Counting Sort",
         "Cycle Sort", "Dual Pivot Quick Sort", "Dutch National Flag Sort",
         "Gnome Sort", "Hash Map Sort", "Heap Sort",
