@@ -1,5 +1,7 @@
-unnamed package
+specialiststeak
 specialiststeak.Algorithms
+specialiststeak.Algorithms.Sorts
+specialiststeak.Algorithms.Utils
 specialiststeak.CustomSorts
 specialiststeak.memoryutils
 specialiststeak.memoryutils.CSV
