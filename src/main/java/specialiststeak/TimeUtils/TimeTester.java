@@ -24,6 +24,12 @@ public class TimeTester {
         return (end - start);
     }
 
+    public static String compareTimes(Runnable code1, Runnable code2) {
+        long time1 = runCode(code1);
+        long time2 = runCode(code2);
+        return "Code 1 took " + time1 + "ns and Code 2 took " + time2 + "ns. Code 1 was " + (time1 - time2) + "ns faster.";
+    }
+
     public void runTimedCode(Runnable code) {
         this.startTimer();
         code.run();
