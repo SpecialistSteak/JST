@@ -43,16 +43,12 @@ public class ExampleProgram {
         System.out.println(timeTester);
 
         System.out.println(compareTimes(() -> {
-            try {
-                Thread.sleep(1);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+            for (int i = 0; i < 1000; i++) {
+                i += 1;
             }
         }, () -> {
-            try {
-                Thread.sleep(2);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+            for (int i = 0; i < 1075; i++) {
+                i += 1;
             }
         }, 1000 /*NUMBER OF ITERATIONS*/));
 
