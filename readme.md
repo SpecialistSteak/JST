@@ -136,6 +136,7 @@ for (int i = 0; i < arr2.length; i++) {
 - Time testing code fragments with lambdas
 - Time testing without lambdas
 - TimeTester object for logging
+- TimeTester compareTimes() method
 
 To get started, a TimeTester object is simply an ArrayList of Times objects:
 ```
@@ -168,6 +169,8 @@ And to go about printing it, you might do the following:
 System.out.println(SECONDS.convertTime(TimeTester.runCode(() -> {})) + SECONDS.toString());  
 System.out.println(staticConvertTime(TimeTester.runCode(() -> {}), TimeUnits.NANOSECONDS) + "ns");
 ```
+Then, if you would like to compare 2 different times, you can do the following:
+`compareTimes(timeTester, timeTester2, NUM_ITERATIONS);`
 
 # Memory Usage Testing
 Memory Usage Testing:

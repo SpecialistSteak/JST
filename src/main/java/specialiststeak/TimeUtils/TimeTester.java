@@ -24,10 +24,27 @@ public class TimeTester {
         return (end - start);
     }
 
-    public static String compareTimes(Runnable code1, Runnable code2) {
-        long time1 = runCode(code1);
-        long time2 = runCode(code2);
-        return "Code 1 took " + time1 + "ns and Code 2 took " + time2 + "ns. Code 1 was " + (time1 - time2) + "ns faster.";
+    public static String compareTimes(Runnable code1, Runnable code2, int numIterations) {
+        long total1 = 0;
+        long total2 = 0;
+        //Warm up the code:
+        for (int i = 0; i < 5; i++) {
+            runCode(code1);
+            runCode(code2);
+        }
+        for (int i = 0; i < numIterations; i++) {
+            total1 += runCode(code1);
+            total2 += runCode(code2);
+        }
+        long avg1 = total1 / numIterations;
+        long avg2 = total2 / numIterations;
+        if (avg1 > avg2) {
+            return "Code 2 was faster by " + (avg1 - avg2) + "ns on average";
+        } else if (avg2 > avg1) {
+            return "Code 1 was faster by " + (avg2 - avg1) + "ns on average";
+        } else {
+            return "Both codes took the same amount of time on average";
+        }
     }
 
     public void runTimedCode(Runnable code) {

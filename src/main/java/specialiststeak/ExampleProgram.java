@@ -20,6 +20,7 @@ import static specialiststeak.Population.Convert.toIntArray;
 import static specialiststeak.Population.PopulateArray.cloneAndModify;
 import static specialiststeak.Population.PopulateArray.populate;
 import static specialiststeak.TestingUtils.TypeTester.getVarType;
+import static specialiststeak.TimeUtils.TimeTester.compareTimes;
 import static specialiststeak.TimeUtils.TimeTester.runCode;
 import static specialiststeak.TimeUtils.TimeUnits.SECONDS;
 import static specialiststeak.TimeUtils.TimeUnits.staticConvertTime;
@@ -40,6 +41,20 @@ public class ExampleProgram {
 
         System.out.println(timeTester.toString(TimeUnits.MICROSECONDS));
         System.out.println(timeTester);
+
+        System.out.println(compareTimes(() -> {
+            try {
+                Thread.sleep(1);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }, () -> {
+            try {
+                Thread.sleep(2);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }, 1000 /*NUMBER OF ITERATIONS*/));
 
         line();
         System.out.println(SECONDS.convertTime(runCode(() -> {
